@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from "angular2/core";
-import {RouteParams, Router, ROUTER_DIRECTIVES, RouterOutlet} from "angular2/router";
+import {Component, Input, OnInit} from "@angular/core";
+import {RouteParams, Router, ROUTER_DIRECTIVES, RouterOutlet} from "@angular/router-deprecated";
 import {BasePaginator} from "./BasePaginator";
 
 @Component({
@@ -15,7 +15,7 @@ import {BasePaginator} from "./BasePaginator";
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
-        <li *ngFor="#page of getPages()" [ngClass]="{ 'active': currentPage === page }">
+        <li *ngFor="let page of getPages()" [ngClass]="{ 'active': currentPage === page }">
             <a (click)="changePage(page)">{{ page }}</a>
         </li>
         <li [ngClass]="{ 'disabled': currentPage === getTotalPagesCount() }">

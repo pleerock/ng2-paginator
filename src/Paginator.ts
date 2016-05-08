@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from "angular2/core";
+import {Component, Output, EventEmitter} from "@angular/core";
 import {BasePaginator} from "./BasePaginator";
 
 @Component({
@@ -14,7 +14,7 @@ import {BasePaginator} from "./BasePaginator";
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
-        <li *ngFor="#page of getPages()" [ngClass]="{ 'active': currentPage === page }">
+        <li *ngFor="let page of getPages()" [ngClass]="{ 'active': currentPage === page }">
             <a (click)="changePage(page)">{{ page }}</a>
         </li>
         <li [ngClass]="{ 'disabled': currentPage === getTotalPagesCount() }">

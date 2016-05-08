@@ -1,7 +1,8 @@
-import {bootstrap} from "angular2/platform/browser";
-import {Component, provide} from "angular2/core";
-import {ROUTER_PROVIDERS, RouterOutlet, RouteConfig, HashLocationStrategy, LocationStrategy} from "angular2/router";
-import {RouterPaginator} from "../../src/RouterPaginator";
+import {bootstrap} from "@angular/platform-browser-dynamic";
+import {Component, provide} from "@angular/core";
+import {ROUTER_PROVIDERS, RouterOutlet, RouteConfig} from "@angular/router-deprecated";
+import {LocationStrategy, HashLocationStrategy} from '@angular/common';
+import {RouterPaginator} from "../../src/index";
 
 @Component({
     selector: "answer-list",

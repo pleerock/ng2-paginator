@@ -5,7 +5,22 @@ Does not depend of jquery.
 
 ## Installation
 
+1. Install npm module:
+
 `npm install ng2-paginator --save`
+
+2. If you are using system.js you may want to add this into `map` and `package` config:
+
+```json
+{
+    "map": {
+        "ng2-paginator": "node_modules/ng2-paginator"
+    },
+    "packages": {
+        "ng2-paginator": { "main": "index.js", "defaultExtension": "js" }
+    }
+}
+```
 
 ## Usage
 
@@ -51,8 +66,8 @@ Second is a paginator that changes *route* when page is changed:
 Using simple paginator:
 
 ```typescript
-import {Component} from "angular2/core";
-import {Paginator} from "ng2-paginator/Paginator";
+import {Component} from "@angular/core";
+import {Paginator} from "ng2-paginator";
 
 @Component({
     selector: "app",
@@ -71,8 +86,8 @@ export class App {
 Using router paginator:
 
 ```typescript
-import {Component} from "angular2/core";
-import {RouterPaginator} from "ng2-paginator/RouterPaginator";
+import {Component} from "@angular/core";
+import {RouterPaginator} from "ng2-paginator";
 
 @Component({
     selector: "app",

@@ -1,6 +1,6 @@
-import {bootstrap} from "angular2/platform/browser";
-import {Component} from "angular2/core";
-import {Paginator} from "../../src/Paginator";
+import {bootstrap} from "@angular/platform-browser-dynamic";
+import {Component} from "@angular/core";
+import {Paginator} from "../../src/index";
 
 @Component({
     selector: "app",
