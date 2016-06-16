@@ -7,21 +7,21 @@ Please star a project if you liked it, or create an issue if you have problems w
 ## Installation
 
 1. Install npm module:
-
-`npm install ng2-paginator --save`
+    
+    `npm install ng2-paginator --save`
 
 2. If you are using system.js you may want to add this into `map` and `package` config:
 
-```json
-{
-    "map": {
-        "ng2-paginator": "node_modules/ng2-paginator"
-    },
-    "packages": {
-        "ng2-paginator": { "main": "index.js", "defaultExtension": "js" }
+    ```json
+    {
+        "map": {
+            "ng2-paginator": "node_modules/ng2-paginator"
+        },
+        "packages": {
+            "ng2-paginator": { "main": "index.js", "defaultExtension": "js" }
+        }
     }
-}
-```
+    ```
 
 ## Usage
 
