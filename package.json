@@ -2,7 +2,7 @@
   "name": "ng2-paginator",
   "version": "0.0.2",
   "description": "Simple pagination control for your angular2 applications using bootstrap3.",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "readmeFilename": "README.md",
   "private": true,
   "author": {
