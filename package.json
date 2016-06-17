@@ -1,6 +1,6 @@
 {
   "name": "ng2-paginator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple pagination control for your angular2 applications using bootstrap3.",
   "license": "MIT",
   "readmeFilename": "README.md",
@@ -24,15 +24,15 @@
     "angular2-paginator",
     "angular2-pagination"
   ],
-  "dependencies": {
-    "@angular/core": "2.0.0-rc.1",
-    "@angular/router-deprecated": "^2.0.0-rc.1",
-    "@angular/common": "^2.0.0-rc.1"
+  "peerDependencies": {
+    "@angular/core": "^2.0.0-rc.1"
   },
   "devDependencies": {
-    "@angular/compiler": "^2.0.0-rc.1",
-    "@angular/platform-browser": "^2.0.0-rc.1",
-    "@angular/platform-browser-dynamic": "^2.0.0-rc.1",
+    "@angular/core": "^2.0.0-rc.2",
+    "@angular/common": "^2.0.0-rc.2",
+    "@angular/compiler": "^2.0.0-rc.2",
+    "@angular/platform-browser": "^2.0.0-rc.2",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.2",
     "bootstrap": "^3.3.6",
     "chai": "^3.4.1",
     "del": "^2.2.0",

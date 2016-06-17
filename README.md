@@ -34,7 +34,8 @@ First is a paginator that shows pages and reacts when they change:
            [onPage]="5"
            [currentPage]="1"
            [maxVisible]="5"
-           (onChange)="someActionOnPageChange()">
+           (onChange)="someActionOnPageChange()"
+            [directionLinks]="true">
 </paginator>
 ```
 
