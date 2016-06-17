@@ -6,16 +6,17 @@ import {Paginator} from "../../src/index";
     selector: "app",
     template: `
 <div class="container">
-
-    <!-- simple paginator -->
+        
+    <!-- default paginator -->
     <paginator 
         [onPage]="5" 
         [total]="100" 
         [maxVisible]="5"></paginator>
-        
-    <!-- paginator with next/prev buttons -->
+
+    <!-- simple paginator without any additional controls -->
     <paginator 
-        [directionLinks]="true"
+        [directionLinks]="false"
+        [boundaryLinks]="false"
         [onPage]="5" 
         [total]="100" 
         [maxVisible]="5"></paginator>
@@ -45,17 +46,16 @@ import {Paginator} from "../../src/index";
         [total]="100" 
         [maxVisible]="5"></paginator>
         
-    <!-- paginator with both direction and boundary buttons -->
-    <paginator 
-        [directionLinks]="true"
-        [boundaryLinks]="true"
-        [onPage]="5" 
-        [total]="100" 
-        [maxVisible]="5"></paginator>
-        
     <!-- paginator that is hidden if there are zero pages -->
     <paginator 
         [hideOnSinglePage]="true"
+        [onPage]="5" 
+        [total]="5" 
+        [maxVisible]="5"></paginator>
+        
+    <!-- paginator that is NOT hidden if there are zero pages -->
+    <paginator 
+        [hideOnSinglePage]="false"
         [onPage]="5" 
         [total]="5" 
         [maxVisible]="5"></paginator>

@@ -29,6 +29,11 @@ import {Component, Output, EventEmitter, Input} from "@angular/core";
 `, styles: [`
 nav.paginator ul.pagination li {
     cursor: pointer;
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
 nav.paginator ul.pagination .hidden {
     display: none;
@@ -54,13 +59,13 @@ export class Paginator {
     maxVisible: number;
 
     @Input()
-    hideOnSinglePage: boolean = false;
+    hideOnSinglePage: boolean = true;
 
     @Input()
     boundaryLinks: boolean = false;
 
     @Input()
-    directionLinks: boolean = false;
+    directionLinks: boolean = true;
 
     @Input()
     boundaryFirstLabel = "First";

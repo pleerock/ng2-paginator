@@ -35,7 +35,13 @@ First is a paginator that shows pages and reacts when they change:
            [currentPage]="1"
            [maxVisible]="5"
            (onChange)="someActionOnPageChange()"
-            [directionLinks]="true">
+           [directionLinks]="true"
+           directionNextLabel="Next"
+           directionPreviousLabel="Prev"
+           [boundaryLinks]="true"
+           boundaryFirstLabel="First"
+           boundaryLastLabel="Last"
+           [hideOnSinglePage]="true">
 </paginator>
 ```
 
@@ -43,25 +49,14 @@ First is a paginator that shows pages and reacts when they change:
 * `onPage` - number of items of content you show per page
 * `currentPage` - currently selected page
 * `maxVisible` - maximum number of pages visible for selection (to prevent pages overflow)
-
-Second is a paginator that changes *route* when page is changed:
-
-```html
-<router-paginator  [total]="50"
-                   [onPage]="5"
-                   [currentPage]="1"
-                   [maxVisible]="5"
-                   [route]="['your_route', { routeParam: 'paramValue' }]"
-                   pageParamName="page">
-</router-paginator>
-```
-
-* `total` - a total number of items of the content you show
-* `onPage` - number of items of content you show per page
-* `currentPage` - currently selected page
-* `maxVisible` - maximum number of pages visible for selection (to prevent pages overflow)
-* `route` - route where we should go on page change
-* `pageParamName` - the name of the page parameter to be passed to a changed route
+* `(onChange)` - event emitted when user changes the page
+* `directionLinks` - Shows direction (prev/next) buttons. Default is **true**.
+* `directionNextLabel` - Label for the next direction button. Default is **»**.
+* `directionPreviousLabel` - Label for the previous direction button. Default is **«**.
+* `boundaryLinks` - Shows boundary (first/last) buttons. Default is **false**.
+* `boundaryFirstLabel` - Label for the first boundary button. Default is **First**.
+* `boundaryLastLabel` - Label for the last boundary button. Default is **Last**.
+* `hideOnSinglePage` - hides the whole paginator if there is only one page. Default is **true**.
 
 ## Sample
 
@@ -75,30 +70,63 @@ import {Paginator} from "ng2-paginator";
     selector: "app",
     template: `
     <div class="container">
-        <paginator [onPage]="5" [total]="100" [maxVisible]="5"></paginator>
+
+        <!-- default paginator -->
+        <paginator
+            [onPage]="5"
+            [total]="100"
+            [maxVisible]="5"></paginator>
+
+        <!-- simple paginator without any additional controls -->
+        <paginator
+            [directionLinks]="false"
+            [boundaryLinks]="false"
+            [onPage]="5"
+            [total]="100"
+            [maxVisible]="5"></paginator>
+
+        <!-- paginator with next/prev custom labels -->
+        <paginator
+            [directionLinks]="true"
+            directionNextLabel="next >>"
+            directionPreviousLabel="<< prev"
+            [onPage]="5"
+            [total]="100"
+            [maxVisible]="5"></paginator>
+
+        <!-- paginator with boundary buttons -->
+        <paginator
+            [boundaryLinks]="true"
+            [onPage]="5"
+            [total]="100"
+            [maxVisible]="5"></paginator>
+
+        <!-- paginator with boundary custom labels -->
+        <paginator
+            [boundaryLinks]="true"
+            boundaryFirstLabel=":first"
+            boundaryLastLabel="last:"
+            [onPage]="5"
+            [total]="100"
+            [maxVisible]="5"></paginator>
+
+        <!-- paginator that is hidden if there are zero pages -->
+        <paginator
+            [hideOnSinglePage]="true"
+            [onPage]="5"
+            [total]="5"
+            [maxVisible]="5"></paginator>
+
+        <!-- paginator that is NOT hidden if there are zero pages -->
+        <paginator
+            [hideOnSinglePage]="false"
+            [onPage]="5"
+            [total]="5"
+            [maxVisible]="5"></paginator>
+
     </div>
     `,
     directives: [Paginator]
-})
-export class App {
-
-}
-```
-
-Using router paginator:
-
-```typescript
-import {Component} from "@angular/core";
-import {RouterPaginator} from "ng2-paginator";
-
-@Component({
-    selector: "app",
-    template: `
-    <div class="container">
-        <router-paginator [onPage]="5" [total]="100" [maxVisible]="5" [route]="['AnswerList', { questionId: 10 }]"></router-paginator>
-    </div>
-    `,
-    directives: [RouterPaginator]
 })
 export class App {
 
