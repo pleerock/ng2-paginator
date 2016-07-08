@@ -93,12 +93,13 @@ export class RouterPaginator {
 
     ngOnInit() {
         this.paramsSubscription = this.activatedRoute.params.subscribe(params => {
+            let page = 1;
             if (params[this.paramName]) {
-                let page = parseInt(params[this.paramName]);
+                page = parseInt(params[this.paramName]);
                 if (page < 1 || page > this.paginator.getTotalPagesCount())
                     page = 1;
-                this.paginator.currentPage = page;
             }
+            setTimeout(() => this.paginator.currentPage = page);
         });
     }
 

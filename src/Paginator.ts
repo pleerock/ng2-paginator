@@ -3,7 +3,7 @@ import {Component, Output, EventEmitter, Input} from "@angular/core";
 @Component({
     selector: "paginator",
     template: `
-<nav class="paginator" [class.hidden]="hideOnSinglePage && getPages().length === 1">
+<nav class="paginator" [class.hidden]="hideOnSinglePage && getPages().length <= 1">
     <ul class="pagination">
         <li [ngClass]="{ hidden: !boundaryLinks, disabled: currentPage === 1 }">
             <a (click)="changePage(1)" [attr.aria-label]="boundaryFirstLabel">{{ boundaryFirstLabel }}</a>
