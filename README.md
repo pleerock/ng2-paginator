@@ -168,5 +168,5 @@ export class App {
 }
 ```
 
-Take a look on samples in [./sample](https://github.com/pleerock/ng2-progress-bar/tree/master/sample) for more examples of
+Take a look on samples in [./sample](https://github.com/pleerock/ng2-paginator/tree/master/sample) for more examples of
 usages.
