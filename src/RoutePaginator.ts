@@ -1,12 +1,12 @@
 import {Component, Output, EventEmitter, Input, ViewChild} from "@angular/core";
 import {Paginator} from "./Paginator";
 import {Subscription} from "rxjs/Rx";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router, NavigationExtras} from "@angular/router";
 
 @Component({
-    selector: "router-paginator",
+    selector: "route-paginator",
     template: `
-<div class="router-paginator">
+<div class="route-paginator">
     <paginator  [total]="total" 
                 [onPage]="onPage" 
                 [maxVisible]="maxVisible" 
@@ -24,14 +24,17 @@ import {ActivatedRoute, Router} from "@angular/router";
         Paginator
     ]
 })
-export class RouterPaginator {
+export class RoutePaginator {
 
     // -------------------------------------------------------------------------
     // Inputs / Outputs
     // -------------------------------------------------------------------------
 
     @Input()
-    paramName: string = "page";
+    paramName: string;
+
+    @Input()
+    queryParamName: string;
 
     @Input()
     total: number;
@@ -92,15 +95,28 @@ export class RouterPaginator {
     // -------------------------------------------------------------------------
 
     ngOnInit() {
-        this.paramsSubscription = this.activatedRoute.params.subscribe(params => {
-            let page = 1;
-            if (params[this.paramName]) {
-                page = parseInt(params[this.paramName]);
-                if (page < 1 || page > this.paginator.getTotalPagesCount())
-                    page = 1;
-            }
-            setTimeout(() => this.paginator.currentPage = page);
-        });
+        if (this.queryParamName) {
+            this.paramsSubscription = this.activatedRoute.queryParams.subscribe(params => {
+                let page = 1;
+                if (params[this.queryParamName]) {
+                    page = parseInt(params[this.queryParamName]);
+                    if (page < 1 || page > this.paginator.getTotalPagesCount())
+                        page = 1;
+                }
+                setTimeout(() => this.paginator.currentPage = page);
+            });
+
+        } else if (this.paramName) {
+            this.paramsSubscription = this.activatedRoute.params.subscribe(params => {
+                let page = 1;
+                if (params[this.paramName]) {
+                    page = parseInt(params[this.paramName]);
+                    if (page < 1 || page > this.paginator.getTotalPagesCount())
+                        page = 1;
+                }
+                setTimeout(() => this.paginator.currentPage = page);
+            });
+        }
     }
 
     ngOnDestroy() {
@@ -113,9 +129,24 @@ export class RouterPaginator {
     // -------------------------------------------------------------------------
 
     changePage(page: number) {
-        const params = Object.assign({}, this.activatedRoute.snapshot.params);
-        params[this.paramName] = page;
-        this.router.navigate([params]);
+        if (this.paramName) {
+            const params = Object.assign({}, this.activatedRoute.snapshot.params);
+            params[this.paramName] = page;
+            const extras: NavigationExtras = {
+                fragment: this.activatedRoute.snapshot.fragment,
+                queryParams: this.activatedRoute.snapshot.queryParams,
+            };
+            this.router.navigate([params], extras);
+
+        } else if (this.queryParamName) {
+            const extras: NavigationExtras = {
+                fragment: this.activatedRoute.snapshot.fragment,
+                queryParams: Object.assign({}, this.activatedRoute.snapshot.queryParams),
+                relativeTo: this.activatedRoute,
+            };
+            extras.queryParams[this.queryParamName] = page;
+            this.router.navigate([], extras);
+        }
         this.onChange.emit(page);
     }
 

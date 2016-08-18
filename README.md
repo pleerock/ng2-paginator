@@ -63,6 +63,7 @@ Second is a `router-paginator` that shows pages and re-navigates using router pa
 
 ```html
 <router-paginator  paramName="page"
+                   queryParamName="page"
                    [total]="50"
                    [onPage]="5"
                    [currentPage]="1"
@@ -78,7 +79,8 @@ Second is a `router-paginator` that shows pages and re-navigates using router pa
 </router-paginator>
 ```
 
-* `paramName` - router parameter name to be used to store page
+* `paramName` - router parameter name to be used to store page. Either this, either `queryParamName` must be set.
+* `queryParamName` - router parameter name to be used to store page. Either this, either `paramName` must be set.
 * `total` - a total number of items of the content you show
 * `onPage` - number of items of content you show per page
 * `currentPage` - currently selected page
@@ -168,5 +170,152 @@ export class App {
 }
 ```
 
+Using route paginator:
+
+```typescript
+
+@Component({
+    selector: "sample2-component",
+    template: `
+
+    <!-- PARAM PAGINATOR-->
+    
+    <!-- default paginator -->
+    <route-paginator 
+        paramName="page" 
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+
+    <!-- simple paginator without any additional controls -->
+    <route-paginator 
+        paramName="page" 
+        [directionLinks]="false"
+        [boundaryLinks]="false"
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator with next/prev custom labels -->
+    <route-paginator 
+        paramName="page" 
+        [directionLinks]="true"
+        directionNextLabel="next >>"
+        directionPreviousLabel="<< prev"
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator with boundary buttons -->
+    <route-paginator 
+        paramName="page" 
+        [boundaryLinks]="true"
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator with boundary custom labels -->
+    <route-paginator 
+        paramName="page" 
+        [boundaryLinks]="true"
+        boundaryFirstLabel=":first"
+        boundaryLastLabel="last:"
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator that is hidden if there are zero pages -->
+    <route-paginator 
+        paramName="page" 
+        [hideOnSinglePage]="true"
+        [onPage]="5" 
+        [total]="5" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator that is NOT hidden if there are zero pages -->
+    <route-paginator 
+        paramName="page" 
+        [hideOnSinglePage]="false"
+        [onPage]="5" 
+        [total]="5" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- QUERY PARAM PAGINATOR-->
+    
+    <!-- default paginator -->
+    <route-paginator 
+        queryParamName="page" 
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+
+    <!-- simple paginator without any additional controls -->
+    <route-paginator 
+        queryParamName="page" 
+        [directionLinks]="false"
+        [boundaryLinks]="false"
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator with next/prev custom labels -->
+    <route-paginator 
+        queryParamName="page" 
+        [directionLinks]="true"
+        directionNextLabel="next >>"
+        directionPreviousLabel="<< prev"
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator with boundary buttons -->
+    <route-paginator 
+        queryParamName="page" 
+        [boundaryLinks]="true"
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator with boundary custom labels -->
+    <route-paginator 
+        queryParamName="page" 
+        [boundaryLinks]="true"
+        boundaryFirstLabel=":first"
+        boundaryLastLabel="last:"
+        [onPage]="5" 
+        [total]="100" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator that is hidden if there are zero pages -->
+    <route-paginator 
+        queryParamName="page" 
+        [hideOnSinglePage]="true"
+        [onPage]="5" 
+        [total]="5" 
+        [maxVisible]="5"></route-paginator>
+        
+    <!-- paginator that is NOT hidden if there are zero pages -->
+    <route-paginator 
+        queryParamName="page" 
+        [hideOnSinglePage]="false"
+        [onPage]="5" 
+        [total]="5" 
+        [maxVisible]="5"></route-paginator>
+        
+`,
+    directives: [RoutePaginator]
+})
+export class Sample2Component {
+
+}
+```
+
 Take a look on samples in [./sample](https://github.com/pleerock/ng2-paginator/tree/master/sample) for more examples of
 usages.
+
+## Release notes
+
+**0.0.8**
+
+* `router-paginator` has been renamed to `route-paginator`
+* `route-paginator` now should have implicitly set `paramName` or `queryParamName`

@@ -1,7 +1,7 @@
 import {Paginator} from "./Paginator";
-import {RouterPaginator} from "./RouterPaginator";
+import {RoutePaginator} from "./RoutePaginator";
 
 export * from "./Paginator";
-export * from "./RouterPaginator";
+export * from "./RoutePaginator";
 
-export const PAGINATOR_DIRECTIVES = [Paginator, RouterPaginator];
+export const PAGINATOR_DIRECTIVES = [Paginator, RoutePaginator];
