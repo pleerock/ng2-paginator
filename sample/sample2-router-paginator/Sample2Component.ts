@@ -12,14 +12,14 @@ import {provideRouter} from "@angular/router";
     
     <!-- default paginator -->
     <route-paginator 
-        paramName="page" 
+        param="page" 
         [onPage]="5" 
         [total]="100" 
         [maxVisible]="5"></route-paginator>
 
     <!-- simple paginator without any additional controls -->
     <route-paginator 
-        paramName="page" 
+        param="page" 
         [directionLinks]="false"
         [boundaryLinks]="false"
         [onPage]="5" 
@@ -28,7 +28,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator with next/prev custom labels -->
     <route-paginator 
-        paramName="page" 
+        param="page" 
         [directionLinks]="true"
         directionNextLabel="next >>"
         directionPreviousLabel="<< prev"
@@ -38,7 +38,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator with boundary buttons -->
     <route-paginator 
-        paramName="page" 
+        param="page" 
         [boundaryLinks]="true"
         [onPage]="5" 
         [total]="100" 
@@ -46,7 +46,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator with boundary custom labels -->
     <route-paginator 
-        paramName="page" 
+        param="page" 
         [boundaryLinks]="true"
         boundaryFirstLabel=":first"
         boundaryLastLabel="last:"
@@ -56,7 +56,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator that is hidden if there are zero pages -->
     <route-paginator 
-        paramName="page" 
+        param="page" 
         [hideOnSinglePage]="true"
         [onPage]="5" 
         [total]="5" 
@@ -64,7 +64,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator that is NOT hidden if there are zero pages -->
     <route-paginator 
-        paramName="page" 
+        param="page" 
         [hideOnSinglePage]="false"
         [onPage]="5" 
         [total]="5" 
@@ -74,14 +74,14 @@ import {provideRouter} from "@angular/router";
     
     <!-- default paginator -->
     <route-paginator 
-        queryParamName="page" 
+        queryParam="page" 
         [onPage]="5" 
         [total]="100" 
         [maxVisible]="5"></route-paginator>
 
     <!-- simple paginator without any additional controls -->
     <route-paginator 
-        queryParamName="page" 
+        queryParam="page" 
         [directionLinks]="false"
         [boundaryLinks]="false"
         [onPage]="5" 
@@ -90,7 +90,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator with next/prev custom labels -->
     <route-paginator 
-        queryParamName="page" 
+        queryParam="page" 
         [directionLinks]="true"
         directionNextLabel="next >>"
         directionPreviousLabel="<< prev"
@@ -100,7 +100,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator with boundary buttons -->
     <route-paginator 
-        queryParamName="page" 
+        queryParam="page" 
         [boundaryLinks]="true"
         [onPage]="5" 
         [total]="100" 
@@ -108,7 +108,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator with boundary custom labels -->
     <route-paginator 
-        queryParamName="page" 
+        queryParam="page" 
         [boundaryLinks]="true"
         boundaryFirstLabel=":first"
         boundaryLastLabel="last:"
@@ -118,7 +118,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator that is hidden if there are zero pages -->
     <route-paginator 
-        queryParamName="page" 
+        queryParam="page" 
         [hideOnSinglePage]="true"
         [onPage]="5" 
         [total]="5" 
@@ -126,7 +126,7 @@ import {provideRouter} from "@angular/router";
         
     <!-- paginator that is NOT hidden if there are zero pages -->
     <route-paginator 
-        queryParamName="page" 
+        queryParam="page" 
         [hideOnSinglePage]="false"
         [onPage]="5" 
         [total]="5" 

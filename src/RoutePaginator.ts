@@ -31,10 +31,10 @@ export class RoutePaginator {
     // -------------------------------------------------------------------------
 
     @Input()
-    paramName: string;
+    param: string;
 
     @Input()
-    queryParamName: string;
+    queryParam: string;
 
     @Input()
     total: number;
@@ -95,22 +95,22 @@ export class RoutePaginator {
     // -------------------------------------------------------------------------
 
     ngOnInit() {
-        if (this.queryParamName) {
+        if (this.queryParam) {
             this.paramsSubscription = this.activatedRoute.queryParams.subscribe(params => {
                 let page = 1;
-                if (params[this.queryParamName]) {
-                    page = parseInt(params[this.queryParamName]);
+                if (params[this.queryParam]) {
+                    page = parseInt(params[this.queryParam]);
                     if (page < 1 || page > this.paginator.getTotalPagesCount())
                         page = 1;
                 }
                 setTimeout(() => this.paginator.currentPage = page);
             });
 
-        } else if (this.paramName) {
+        } else if (this.param) {
             this.paramsSubscription = this.activatedRoute.params.subscribe(params => {
                 let page = 1;
-                if (params[this.paramName]) {
-                    page = parseInt(params[this.paramName]);
+                if (params[this.param]) {
+                    page = parseInt(params[this.param]);
                     if (page < 1 || page > this.paginator.getTotalPagesCount())
                         page = 1;
                 }
@@ -129,22 +129,22 @@ export class RoutePaginator {
     // -------------------------------------------------------------------------
 
     changePage(page: number) {
-        if (this.paramName) {
+        if (this.param) {
             const params = Object.assign({}, this.activatedRoute.snapshot.params);
-            params[this.paramName] = page;
+            params[this.param] = page;
             const extras: NavigationExtras = {
                 fragment: this.activatedRoute.snapshot.fragment,
                 queryParams: this.activatedRoute.snapshot.queryParams,
             };
             this.router.navigate([params], extras);
 
-        } else if (this.queryParamName) {
+        } else if (this.queryParam) {
             const extras: NavigationExtras = {
                 fragment: this.activatedRoute.snapshot.fragment,
                 queryParams: Object.assign({}, this.activatedRoute.snapshot.queryParams),
                 relativeTo: this.activatedRoute,
             };
-            extras.queryParams[this.queryParamName] = page;
+            extras.queryParams[this.queryParam] = page;
             this.router.navigate([], extras);
         }
         this.onChange.emit(page);
