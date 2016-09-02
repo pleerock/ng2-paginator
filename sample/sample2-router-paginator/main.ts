@@ -1,9 +1,10 @@
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 import {Component, NgModule} from "@angular/core";
-import {ROUTER_DIRECTIVES, RouterModule} from "@angular/router";
+import {RouterModule} from "@angular/router";
 import {Sample2Component} from "./Sample2Component";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {BrowserModule} from "@angular/platform-browser";
+import {PaginatorModule} from "../../src/index";
 
 @Component({
     selector: "app",
@@ -11,8 +12,7 @@ import {BrowserModule} from "@angular/platform-browser";
 <div class="container">
     <router-outlet></router-outlet>
 </div>
-`,
-    directives: [ROUTER_DIRECTIVES]
+`
 })
 export class Sample2App {
 
@@ -21,6 +21,7 @@ export class Sample2App {
 @NgModule({
     imports: [
         BrowserModule,
+        PaginatorModule,
         RouterModule.forRoot([
             { path: "default", component: Sample2Component }
         ])

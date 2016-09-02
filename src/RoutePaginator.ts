@@ -19,10 +19,7 @@ import {ActivatedRoute, Router, NavigationExtras} from "@angular/router";
                 [directionPreviousLabel]="directionPreviousLabel" 
                 (onChange)="changePage($event)"></paginator>
 </div>
-`,
-    directives: [
-        Paginator
-    ]
+`
 })
 export class RoutePaginator {
 

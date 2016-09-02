@@ -1,8 +1,4 @@
-import {bootstrap} from "@angular/platform-browser-dynamic";
 import {Component} from "@angular/core";
-import {Paginator} from "../../src/index";
-import {RoutePaginator} from "../../src/RoutePaginator";
-import {provideRouter} from "@angular/router";
 
 @Component({
     selector: "sample2-component",
@@ -132,8 +128,7 @@ import {provideRouter} from "@angular/router";
         [total]="5" 
         [maxVisible]="5"></route-paginator>
         
-`,
-    directives: [RoutePaginator]
+`
 })
 export class Sample2Component {
 

@@ -1,7 +1,7 @@
 import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 import {Component, NgModule} from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import {Paginator} from "../../src/index";
+import {BrowserModule} from "@angular/platform-browser";
+import {PaginatorModule} from "../../src/index";
 
 @Component({
     selector: "app",
@@ -62,8 +62,7 @@ import {Paginator} from "../../src/index";
         [maxVisible]="5"></paginator>
         
 </div>
-`,
-    directives: [Paginator]
+`
 })
 export class Sample1App {
 
@@ -71,7 +70,8 @@ export class Sample1App {
 
 @NgModule({
     imports: [
-        BrowserModule
+        BrowserModule,
+        PaginatorModule
     ],
     declarations: [
         Sample1App

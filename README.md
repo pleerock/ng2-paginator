@@ -25,7 +25,8 @@ Please star a project if you liked it, or create an issue if you have problems w
 
 ## Usage
 
-There are two components.
+Import `PaginatorModule` in your app.
+There are two components you can use in your components.
 
 First is a `paginator` is a simple control that shows pages and emits events when page is being chagned:
 
@@ -101,7 +102,7 @@ Using simple paginator:
 
 ```typescript
 import {Component} from "@angular/core";
-import {Paginator} from "ng2-paginator";
+import {PaginatorModule} from "ng2-paginator";
 
 @Component({
     selector: "app",
@@ -162,10 +163,25 @@ import {Paginator} from "ng2-paginator";
             [maxVisible]="5"></paginator>
 
     </div>
-    `,
-    directives: [Paginator]
+    `
 })
 export class App {
+
+}
+
+@NgModule({
+    imports: [
+        // ...
+        PaginatorModule
+    ],
+    declarations: [
+        App
+    ],
+    bootstrap: [
+        App
+    ]
+})
+export class AppModule {
 
 }
 ```
@@ -302,10 +318,25 @@ Using route paginator:
         [total]="5" 
         [maxVisible]="5"></route-paginator>
         
-`,
-    directives: [RoutePaginator]
+`
 })
 export class Sample2Component {
+
+}
+
+@NgModule({
+    imports: [
+        // ...
+        PaginatorModule
+    ],
+    declarations: [
+        App
+    ],
+    bootstrap: [
+        App
+    ]
+})
+export class AppModule {
 
 }
 ```
@@ -314,6 +345,10 @@ Take a look on samples in [./sample](https://github.com/pleerock/ng2-paginator/t
 usages.
 
 ## Release notes
+
+**0.0.9**
+
+* upgrade to angular rc.6
 
 **0.0.8**
 
