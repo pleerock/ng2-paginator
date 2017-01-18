@@ -1,4 +1,4 @@
-# ng2-paginator
+# ngx-paginator
 
 Simple pagination bar control for your angular2 applications using bootstrap3.
 Does not depend of jquery. If you don't want to use it without bootstrap - simply create proper css classes. 
@@ -8,17 +8,17 @@ Please star a project if you liked it, or create an issue if you have problems w
 
 1. Install npm module:
     
-    `npm install ng2-paginator --save`
+    `npm install ngx-paginator --save`
 
 2. If you are using system.js you may want to add this into `map` and `package` config:
 
     ```json
     {
         "map": {
-            "ng2-paginator": "node_modules/ng2-paginator"
+            "ngx-paginator": "node_modules/ngx-paginator"
         },
         "packages": {
-            "ng2-paginator": { "main": "index.js", "defaultExtension": "js" }
+            "ngx-paginator": { "main": "index.js", "defaultExtension": "js" }
         }
     }
     ```
@@ -102,7 +102,7 @@ Using simple paginator:
 
 ```typescript
 import {Component} from "@angular/core";
-import {PaginatorModule} from "ng2-paginator";
+import {PaginatorModule} from "ngx-paginator";
 
 @Component({
     selector: "app",
@@ -341,7 +341,7 @@ export class AppModule {
 }
 ```
 
-Take a look on samples in [./sample](https://github.com/pleerock/ng2-paginator/tree/master/sample) for more examples of
+Take a look on samples in [./sample](https://github.com/pleerock/ngx-paginator/tree/master/sample) for more examples of
 usages.
 
 ## Release notes
